@@ -1,5 +1,7 @@
 export interface IBook{
-    bookId:number;
+    //bookId:number;
+    //we required id for in-memory web api
+    id:number;
     bookName:string;
     bookCode:string;
     tags?: string[];

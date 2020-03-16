@@ -23,6 +23,7 @@ export class BookDetailComponent implements OnInit {
       this.getBook(id);
     }
   }
+  
     getBook(id:number){
       this.bookService.getBook(id).subscribe({
         next:book=> this.book = book,

@@ -9,34 +9,36 @@
                 <input type="text" [(ngModel)] = 'listFilter'/>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="listFilter">
             <div class="col-md-6">
                 <h4>Filtered by: {{listFilter}}</h4>
             </div>
         </div>
+
         <div class="table-responsive">
             <!--to check if there is list of books and books conatins some list of elements-->
-            <table class="table" *ngIf="books && books.length">
+            <table class="table mb-0" *ngIf="books && books.length">
                 <thead>
                     <tr>
                         <th> 
-                            <button class="btn btn-primary" (click)='toggleImage()'>{{showImage ? 'Hide' : 'Show'}} Image</button>
+                            <button class="btn btn-outline-primary btn-sm" (click)='toggleImage()'>{{showImage ? 'Hide' : 'Show'}} Image</button>
                         </th>
                         <th>Book</th> 
                         <th>Code</th>  
                         <th>Available</th>
                         <th>Price</th>
                         <th>Rating</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--<tr *ngFor="let book of books">-->
                         <tr *ngFor="let book of filteredBooks">
-                        <td><img *ngIf="showImage"  [src]="book.imageUrl"
+                        <td><img *ngIf="showImage && book.imageUrl"  [src]="book.imageUrl"
                             [title]="book.bookName" 
                             [style.width.px]="imageWidth"
                             [style.margin.px]="imageMargin" ></td>
-                        <td><a [routerLink]="['/books',book.bookId]">{{book.bookName}}</a></td>
+                        <td><a [routerLink]="['/books',book.id]">{{book.bookName}}</a></td>
                         <td>{{book.bookCode | lowercase | covertToSpaces : '-'}}</td>
                         <td>{{book.releaseDate}}</td>
                         <td>{{book.price | currency : 'INR' : 'symbol' : '1.2-2'}}</td>
@@ -48,4 +50,9 @@
             </table>
     </div>
     </div>
+</div>
+
+<div *ngIf="errorMessage"
+     class="alert alert-danger">
+  Error: {{ errorMessage }}
 </div>

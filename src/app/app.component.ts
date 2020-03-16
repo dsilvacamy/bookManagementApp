@@ -10,10 +10,13 @@ import {Component} from '@angular/core';
   `
     <nav class="navbar navbar-expand navbar-light bg-light" >
     <a class="navbar-brand">{{pageTitle}}</a>
-    <ul class="nav nav-pills">
-      <li><a class="nav-link" [routerLink]="['/welcome']">Home</a></li>
-      <li><a class="nav-link" [routerLink]="['/books']">Book List</a></li>
-      <li><a class="nav-link" [routerLink]="['/books/0/edit']">Add Book</a></li>
+    <ul class="navbar-nav">
+      <li><a class="nav-link" routerLinkActive='active'
+       [routerLink]="['/welcome']">Home</a></li>
+      <li><a class="nav-link" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/books']">Book List</a></li>
+      <li><a class="nav-link" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/books','0','edit']">Add Book</a></li>
     </ul>
     </nav>
     <div class="container">

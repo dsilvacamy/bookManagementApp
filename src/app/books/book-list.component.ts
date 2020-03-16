@@ -14,7 +14,7 @@ export class BookListComponent implements OnInit{
  pageTitle:string// = "Book List";
  
   imageWidth:number=75;
-  imageMargin:number=15;
+  imageMargin:number=7;
   //to work on show Image button
   showImage:boolean=false;
   errorMessage:string ;
