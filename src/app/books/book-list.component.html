@@ -1,3 +1,4 @@
+
 <div class='card'>
     <div class="card-header">
         {{pageTitle}}
@@ -13,9 +14,11 @@
             <div class="col-md-6">
                 <h4>Filtered by: {{listFilter}}</h4>
             </div>
+            
         </div>
-
+        
         <div class="table-responsive">
+            
             <!--to check if there is list of books and books conatins some list of elements-->
             <table class="table mb-0" *ngIf="books && books.length">
                 <thead>
@@ -38,7 +41,8 @@
                             [title]="book.bookName" 
                             [style.width.px]="imageWidth"
                             [style.margin.px]="imageMargin" ></td>
-                        <td><a [routerLink]="['/books',book.id]">{{book.bookName}}</a></td>
+                        <td><a [routerLink]="['/books',book.id]"
+                            [queryParams]="{filterBy: listFilter,showImage: showImage}">{{book.bookName}}</a></td>
                         <td>{{book.bookCode | lowercase | covertToSpaces : '-'}}</td>
                         <td>{{book.releaseDate}}</td>
                         <td>{{book.price | currency : 'INR' : 'symbol' : '1.2-2'}}</td>

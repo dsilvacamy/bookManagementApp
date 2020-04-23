@@ -4,10 +4,17 @@ export interface IBook{
     id:number;
     bookName:string;
     bookCode:string;
+    category:string;
     tags?: string[];
-    releaseDate:string;
     description:string;
-    price:number;
+    releaseDate: string;
+    price: number;
     starRating:number;
     imageUrl:string;
+}
+
+export interface BookResolved{
+    book: IBook;
+    //here we return error along with resolver data
+    error?: any;
 }

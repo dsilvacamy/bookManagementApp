@@ -54,15 +54,17 @@ getBooks():Observable<IBook[]>{
       catchError(this.handleError)
     );
   }
-    private handleError(err: HttpErrorResponse){
-      let errorMessage= '';
+   // private handleError(err: HttpErrorResponse)
+   private handleError (err){
+      let errorMessage: string;
       if(err.error instanceof ErrorEvent){
         //handle clientside error
         errorMessage = `An error occured: ${err.error.message}`;
       }
       else{
         //handle serverside error
-        errorMessage = `server returned code ${err.status}, error message is : ${err.message}`;
+        //errorMessage = `server returned code ${err.status}, error message is : ${err.message}`;
+        errorMessage = `server returned code ${err.status}, error message is : ${err.body.error}`;
       }
       console.log(errorMessage);
       return throwError(errorMessage);
@@ -99,11 +101,13 @@ getBooks():Observable<IBook[]>{
   id:0,
   bookName:null,
   bookCode:null,
-  tags: [''],
+  category:null,
+  tags: [],
   releaseDate:null,
   description:null,
   price:null,
   starRating:null,
-  imageUrl:null}
+  imageUrl:null
 };
+}
 }
